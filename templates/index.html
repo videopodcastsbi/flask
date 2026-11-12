@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} - FlaskApp{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Hero Section */
+    .hero {
+        text-align: center;
+        padding: 3rem 1rem;
+        background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        margin-bottom: 3rem;
+    }
+
+    .hero-badge {
+        display: inline-block;
+        background-color: #e0e7ff;
+        color: var(--primary);
+        padding: 0.35rem 0.85rem;
+        border-radius: 9999px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--text-main);
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+
+    .hero-desc {
+        font-size: 1.125rem;
+        color: var(--text-muted);
+        max-width: 600px;
+        margin: 0 auto 1.75rem auto;
+        line-height: 1.6;
+    }
+
+    .hero-btn {
+        display: inline-block;
+        background-color: var(--primary);
+        color: #ffffff;
+        padding: 0.75rem 1.75rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .hero-btn:hover {
+        background-color: var(--primary-hover);
+        transform: translateY(-2px);
+    }
+
+    /* Features Grid */
+    .section-title {
+        text-align: center;
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+        font-weight: 700;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .feature-card {
+        background-color: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.75rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+    }
+
+    .feature-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        display: inline-block;
+    }
+
+    .feature-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .feature-desc {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <span class="hero-badge">Python & Flask</span>
+    <h1 class="hero-title">{{ message }}</h1>
+    <p class="hero-desc">
+        Ini adalah contoh halaman yang dirender menggunakan template engine Jinja2 di Flask, dengan modularitas template base.html.
+    </p>
+    <a href="#fitur" class="hero-btn">Lihat Fitur</a>
+</section>
+
+<!-- Features Section -->
+<section id="fitur">
+    <h2 class="section-title">Fitur Template Ini</h2>
+    <div class="features-grid">
+        {% for feature in features %}
+        <div class="feature-card">
+            <span class="feature-icon">{{ feature.icon }}</span>
+            <h3 class="feature-name">{{ feature.title }}</h3>
+            <p class="feature-desc">{{ feature.desc }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
